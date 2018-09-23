@@ -3,6 +3,7 @@ import "./App.css";
 import { render } from "react-dom";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import styled from 'styled-components'
+import Modal from './modal.js'
 
 const ReactLeaflet = { Map: Map, TileLayer };
 
@@ -51,7 +52,8 @@ class App extends React.Component {
     this.state = {
       lat: 21.2899317,
       lng: -157.852566,
-      zoom: 13
+      zoom: 13,
+      showModal: false
     };
   }
 
@@ -59,8 +61,10 @@ class App extends React.Component {
     const position = [this.state.lat, this.state.lng];
     return (
       <Wrapper>
+
         <Header>ReShore</Header>
-        <Button>Report</Button>
+        <Button onClick={()=>this.setState({ showModal: !this.state.showModal })}>Report</Button>
+        {this.state.showModal && <h1>OLA</h1>}
         <Map center={position} zoom={this.state.zoom}>
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
         </Map>
