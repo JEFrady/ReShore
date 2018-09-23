@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       lat: 21.2899317,
       lng: -157.852566,
-      zoom: 13
+      zoom: 15
     };
   }
 
@@ -20,6 +20,9 @@ class App extends React.Component {
     return (
       <Map center={position} zoom={this.state.zoom}>
         <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+        <Marker position={position}>
+          <Popup>Trash: Enter text via props here</Popup>
+        </Marker>
       </Map>
     );
   }
