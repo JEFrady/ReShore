@@ -1,8 +1,16 @@
-.leaflet-container {
-  height: 500px;
-  width: 500px;
+@import url(https://fonts.googleapis.com/css?family=Monoton|Roboto);
+
+* {
+  margin: 0 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
-/*
-mark/CSS height added to make map tiles aligned properly
-*/
+
+.leaflet-container {
+  grid-column: 1/7;
+  grid-row: 2/7;
+  z-index: 2;
+}
