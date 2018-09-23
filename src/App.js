@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { render } from 'react-dom'
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 
-class App extends Component {
+const ReactLeaflet = { Map: Map, TileLayer};
+
+
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      lat: 21.2899317,
+      lng: -157.8525660,
+      zoom: 13
+    }
+  }
+
   render() {
+    const position = [this.state.lat, this.state.lng];
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Map center={position} zoom={this.state.zoom}>
+        <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
+      </Map>
     );
   }
 }
 
+
+render(<App />, document.getElementById('container'))
 export default App;
